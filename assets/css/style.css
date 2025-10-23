@@ -20,205 +20,172 @@
   /* Layout */
   --maxw:1100px;
   --space:clamp(14px,1.6vw,22px);
+
+  /* Global rhythm */
+  --page-top: clamp(2rem, 5vw, 3rem);   /* space from navbar to first content */
+  --section-y: clamp(2rem, 5vw, 3rem);  /* section vertical padding */
 }
 
 /* ============ BASE / RESET ============ */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{ box-sizing:border-box }
+html{ scroll-behavior:smooth }
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition:none !important; scroll-behavior:auto !important; }
+}
 body{
   margin:0;
   font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  color:var(--text); background:var(--bg);
-  line-height:1.65; font-size:16px;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  font-size:16px;
+
+  /* Sticky footer layout */
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
-img{max-width:100%; height:auto; border-radius:10px}
-a{color:var(--primary); text-decoration:none}
-a:hover{text-decoration:underline}
+img{ max-width:100%; height:auto; border-radius:10px; display:block }
+a{ color:var(--primary); text-decoration:none }
+a:hover{ text-decoration:underline }
+:focus-visible{ outline:none; box-shadow:var(--ring) }
 
-/* Sticky footer layout */
-html, body { height: 100%; }
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* The page's main content grows to fill space */
-main { flex: 1; display: block; }
-
-/* Avoid margin-collapsing that creates random gaps */
-main > :last-child { margin-bottom: 0; }
+/* Main grows to push footer down */
+main{ flex:1; display:block; padding-top:var(--page-top) }
+/* Avoid margin-collapsing */
+main > :last-child{ margin-bottom:0 }
 
 /* ============ LAYOUT HELPERS ============ */
-.container{max-width:var(--maxw); margin-inline:auto; padding:0 var(--space)}
-.section{padding:clamp(2.5rem,5vw,4rem) 0}
-.section h2{margin:0 0 .75rem; font-size:clamp(1.5rem,1.2rem + 1.6vw,2.1rem); color:var(--primary)}
-.lead{color:var(--muted); max-width:70ch}
+.container{ max-width:var(--maxw); margin-inline:auto; padding-inline: clamp(1rem,3vw,2rem) }
+.section{ padding: var(--section-y) 0 }
+.section h2{ margin:0 0 .75rem; font-size:clamp(1.5rem,1.2rem + 1.6vw,2.1rem); color:var(--primary) }
+.lead{ color:var(--muted); max-width:70ch }
 
 /* ============ HEADER / NAV ============ */
 header{
   position:sticky; top:0; z-index:10;
   background:rgba(255,255,255,.92);
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
   border-bottom:1px solid #eee;
   box-shadow:var(--shadow);
 }
 nav{
-  display:flex; align-items:center; justify-content:space-between;
-   flex-wrap: nowrap; /* Keep header in a single row */ 
+  display:flex; align-items:center; justify-content:center; /* centered on all pages */
+  flex-wrap:nowrap; /* keep on one line */
   gap:1rem; padding:.7rem 0;
+  overflow:hidden;
 }
-.brand{display:flex; align-items:center; gap:.75rem; white-space: nowrap; /* prevent title from wrapping */}
-.brand img{width:38px; height:38px; border-radius:8px}
-.navlinks{display:flex; gap:.5rem; flex-wrap: nowrap; align-items: center;}
+/* brand exists in markup but stays hidden site-wide by choice */
+.brand{ display:none }
+
+.navlinks{ display:flex; gap:.75rem; flex-wrap:nowrap; align-items:center }
 .navlinks a{
   padding:.45rem .7rem; border-radius:10px; color:#222;
-  transition:background .2s, color .2s, transform .2s;
+  transition: background .2s, color .2s, transform .2s;
 }
-.navlinks a:hover{text-decoration: none; background:var(--primary); color:#fff; transform:translateY(-1px)}
-.navlinks a:focus-visible{outline:none; box-shadow:var(--ring)}
-/* Active display */
+.navlinks a:hover{ background:var(--primary); color:#fff; transform: translateY(-1px); text-decoration:none }
 .navlinks a.active,
-.navlinks a[aria-current="page"] {
-  background: var(--primary);
-  color: #fff;
-  border-radius: 8px;
-  padding: .45rem .9rem;
+.navlinks a[aria-current="page"]{
+  background:var(--primary);
+  color:#fff;
+  border-radius:8px;
+  padding:.45rem .9rem;
 }
-/* Navbar layout for all pages */
-.brand{display:none;}       /* hide lab title */
-nav{justify-content:center;} /* centers all nav links */
+
 /* ============ BUTTONS ============ */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
   background:var(--primary); color:#fff; border:1px solid transparent;
   padding:.7rem 1rem; border-radius:999px; font-weight:600; box-shadow:var(--shadow);
-  transition:transform .2s, box-shadow .2s, background .2s, color .2s;
+  transition: transform .2s, box-shadow .2s, background .2s, color .2s;
 }
-.btn:hover{transform:translateY(-2px)}
-.btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
+.btn:hover{ transform:translateY(-2px) }
+.btn.secondary{ background:#fff; color:var(--primary); border-color:var(--primary) }
 
 /* ============ HOMEPAGE HERO ============ */
 .hero{
-  background:linear-gradient(135deg,#fff 0%,#fff 55%,var(--bg-alt) 100%);
+  background: linear-gradient(135deg,#fff 0%,#fff 55%,var(--bg-alt) 100%);
   border-bottom:1px solid #eee;
 }
 .hero .wrap{
   display:grid; gap:2rem;
-  grid-template-columns:1.2fr 1fr;
-  padding:clamp(2rem,6vw,4rem) 0;
+  grid-template-columns: 1.2fr 1fr;
+  padding: var(--section-y) 0; /* normalized spacing */
 }
-.hero h1{margin:.3rem 0; font-size:clamp(2rem,1.2rem + 2.5vw,3rem); color:#111}
-.hero p{color:var(--muted); font-size:1.05rem}
-.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem}
+.hero h1{ margin:.3rem 0; font-size:clamp(2rem,1.2rem + 2.5vw,3rem); color:#111 }
+.hero p{ color:var(--muted); font-size:1.05rem }
+.stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem }
 
 /* ============ COMPONENTS ============ */
 .card{
   background:#fff; border:1px solid #eee; border-radius:var(--radius);
   box-shadow:var(--shadow); overflow:hidden;
-  transition:transform .2s ease, box-shadow .2s ease;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
-.card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.12)}
+.card:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.12) }
 
-.grid{display:grid; gap:1rem; grid-template-columns:repeat(3,1fr)}
+/* Optional: comfy padding for all cards (remove inline paddings) */
+/* .card{ padding:1rem } */
+
+.grid{ display:grid; gap:1rem; grid-template-columns:repeat(3,1fr) }
 .tag{
   display:inline-block; padding:.25rem .55rem; font-size:.78rem; font-weight:700;
   border:1px solid #ddd; border-radius:999px; color:var(--accent); background:var(--bg-alt);
 }
 
-/* People grid */
-.people{display:grid; gap:1rem; grid-template-columns:repeat(4,1fr)}
-.person{text-align:center; padding:1rem}
-.person .role{color:var(--muted); font-size:.92rem}
-/* Uniform headshots (optional) */
-/* .person img{width:120px; height:120px; border-radius:50%; object-fit:cover} */
+/* People */
+.people{ display:grid; gap:1rem; grid-template-columns:repeat(3, minmax(0,1fr)) }
+.person{ text-align:center; padding:1rem }
+.person img{
+  width:140px; height:140px; object-fit:cover; border-radius:50%;
+  display:block; margin:0 auto .75rem;
+}
+.person h3{ margin:.5rem 0 .25rem }
+.person .role{ color:var(--muted); font-size:.92rem }
 
-/* Publications list */
-.publist{display:grid; gap:.75rem; margin-top:.75rem}
-.pubitem{background:#fff; border:1px solid #eee; border-radius:12px; padding:.85rem 1rem}
-.pubitem .meta{color:var(--muted); font-size:.95rem}
+/* Publications */
+.publist{ display:grid; gap:.75rem; margin-top:.75rem }
+.pubitem{ background:#fff; border:1px solid #eee; border-radius:12px; padding:.9rem 1rem }
+.pubitem .meta{ color:var(--muted); font-size:.95rem }
+
+/* Social cards */
+.social{ padding:0 }
+.social .social-row{ display:flex; gap:.85rem; align-items:center; padding:1rem }
+.icon{ width:28px; height:28px; color:var(--primary); flex:0 0 28px }
 
 /* ============ FOOTER ============ */
-footer {
+footer{
   background: linear-gradient(135deg, #990000 0%, #4a0d0d 50%, #2b2b2b 100%);
-  color: #ffffff;
-  padding: 2rem 0;
-  margin-top: 2rem;
-  text-align: left;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  color:#fff; padding:2rem 0; margin-top:2rem;
+  text-align:left; text-shadow:0 1px 2px rgba(0,0,0,.4);
+}
+footer .small{ color:#e6e6e6 }
+footer a{
+  color:#fff; text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.6);
+}
+footer a:hover{ border-bottom-color:#fff }
+.footer-divider{
+  height:1px; width:100%;
+  background: rgba(0,0,0,.1); /* neutral line above footer if used outside footer */
+  margin-top:2rem;
 }
 
-footer .small {
-  color: #e6e6e6; /* lighter gray for contrast */
-}
-
-footer a {
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.6);
-}
-
-footer a:hover {
-  border-bottom-color: #fff;
-}
-
-.footer-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08); /* subtle gray line */
-  margin-top: 2rem;
-  width: 100%;
-}
 /* ============ UTILITIES ============ */
-.small{font-size:.9rem; color:#666}
-.muted{color:var(--muted)}
+.small{ font-size:.9rem; color:#666 }
+.muted{ color:var(--muted) }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:1000px){
-  .hero .wrap{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr 1fr}
-  .people{grid-template-columns:1fr 1fr 1fr}
+  .hero .wrap{ grid-template-columns:1fr }
+  .grid{ grid-template-columns:1fr 1fr }
+  .people{ grid-template-columns:1fr 1fr }
 }
 @media (max-width:640px){
-  .navlinks{display:none} /* simple mobile treatment; we can consider swapping to hamburger later */
-  .grid,.people{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr 1fr; gap:.75rem}
-}
-/* =========================
-   CONSISTENT LAYOUT OVERRIDES
-   ========================= */
-
-/* 1) Unified container padding (same side gutters everywhere) */
-.container{
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 2rem);
+  .navlinks{ display:none } /* simple mobile treatment for now */
+  .grid, .people{ grid-template-columns:1fr }
+  .stats{ grid-template-columns:1fr 1fr; gap:.75rem }
 }
 
-/* 2) Global vertical rhythm */
-:root{
-  --page-top: clamp(2rem, 5vw, 3rem);   /* space from navbar to first content */
-  --section-y: clamp(2rem, 5vw, 3rem);  /* section vertical padding */
-}
-
-/* Space under the sticky header for ALL pages */
-main{ padding-top: var(--page-top); }
-
-/* Standardize all sections */
-.section{ padding: var(--section-y) 0; }
-
-/* Make the hero behave like a normal section */
-.hero{ border-bottom: 1px solid #eee; }
-.hero .wrap{ padding: var(--section-y) 0; }
-
-/* 3) Remove random extra gaps caused by margin-collapsing */
-main > .section:first-child{ margin-top: 0; }
-.section .container > :first-child{ margin-top: 0; }
-.section .container > :last-child{  margin-bottom: 0; }
-
-/* 4) Headings: consistent margins across pages */
-h1{ margin: 0 0 .75rem; }
-h2{ margin: 0 0 .75rem; }
-
-/* 5) Navbar: center links on all pages (you already chose this style) */
-nav{ justify-content: center; }
-.brand{ display: none; }  /* keep the brand hidden on every page */
+/* ===== End of stylesheet ===== */
