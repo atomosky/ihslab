@@ -163,6 +163,12 @@ footer a:hover {
   border-bottom-color: #fff;
 }
 
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25); /* subtle white line */
+  margin-bottom: 1rem;
+  width: 100%;
+}
 /* ============ UTILITIES ============ */
 .small{font-size:.9rem; color:#666}
 .muted{color:var(--muted)}
