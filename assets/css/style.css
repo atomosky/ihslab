@@ -165,7 +165,7 @@ footer a:hover {
 
 .footer-divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.25); /* subtle white line */
+  background: rgba(255, 255, 255, 0.08); /* subtle gray line */
   margin-bottom: 1rem;
   width: 100%;
 }
