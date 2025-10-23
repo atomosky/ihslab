@@ -35,6 +35,20 @@ img{max-width:100%; height:auto; border-radius:10px}
 a{color:var(--primary); text-decoration:none}
 a:hover{text-decoration:underline}
 
+/* Sticky footer layout */
+html, body { height: 100%; }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The page's main content grows to fill space */
+main { flex: 1; display: block; }
+
+/* Avoid margin-collapsing that creates random gaps */
+main > :last-child { margin-bottom: 0; }
+
 /* ============ LAYOUT HELPERS ============ */
 .container{max-width:var(--maxw); margin-inline:auto; padding:0 var(--space)}
 .section{padding:clamp(2.5rem,5vw,4rem) 0}
@@ -126,7 +140,6 @@ nav{
 
 /* ============ FOOTER ============ */
 footer{
-  /* If the charcoal accent feels too dark, we can swap to: background: var(--primary); */
   background:linear-gradient(135deg,var(--primary),var(--accent));
   color:#fff; padding:2rem 0; margin-top:2rem;
 }
