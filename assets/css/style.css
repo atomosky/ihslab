@@ -85,10 +85,9 @@ nav{
   border-radius: 8px;
   padding: .45rem .9rem;
 }
-/* Home-only navbar tweak (hide lab title + center links on the homepage) */
-.home .brand{display:none;}
-.home nav{justify-content:center;}
-
+/* Navbar layout for all pages */
+.brand{display:none;}       /* hide lab title */
+nav{justify-content:center;} /* centers all nav links */
 /* ============ BUTTONS ============ */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
