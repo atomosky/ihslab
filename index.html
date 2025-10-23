@@ -12,68 +12,74 @@
 </head>
 <body class="home">
 <div id="header"></div>
-<main class="container">
-    <section class="hero">
-      <div class="container wrap">
-      <h1>Intelligent Health Solutions Lab</h1>
-      <p>Advancing data-driven public health and equitable clinical solutions with trustworthy AI and informatics.</p>
-
-      <div class="stats">
-        <div class="card" style="padding:1rem">
-          <div class="small">Active Grants</div>
-          <div style="font-size:1.5rem; font-weight:800">***</div>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container wrap">
+      <!-- left: title + blurb + stats -->
+      <div>
+        <h1>Intelligent Health Solutions Lab</h1>
+        <p class="lead">
+          Advancing data-driven public health and equitable clinical solutions with trustworthy AI and informatics.
+        </p>
+        <div class="stats">
+          <div class="card" style="padding:1rem">
+            <div class="small">Active Grants</div>
+            <div style="font-size:1.5rem; font-weight:800">***</div>
+          </div>
+          <div class="card" style="padding:1rem">
+            <div class="small">Publications</div>
+            <div style="font-size:1.5rem; font-weight:800">***</div>
+          </div>
+          <div class="card" style="padding:1rem">
+            <div class="small">Community Partners</div>
+            <div style="font-size:1.5rem; font-weight:800">***</div>
+          </div>
         </div>
-        <div class="card" style="padding:1rem">
-          <div class="small">Publications</div>
-          <div style="font-size:1.5rem; font-weight:800">***</div>
+      </div>
+      <!-- right: image -->
+      <div class="illustration card">
+        <img src="assets/img/coord-placeholder.jpg" alt="Health informatics and AI illustration">
+      </div>
+    </div>
+  </section>
+  <!-- FEATURED PROJECTS -->
+  <section class="section">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>AI2Equity</h3>
+          <p>Explainable AI and stakeholder-engaged methods to improve cardiovascular risk assessment and equity-focused decision-making.</p>
+          <span class="tag">AI/ML</span> <span class="tag">XAI</span> <span class="tag">Equity</span>
         </div>
-        <div class="card" style="padding:1rem">
-          <div class="small">Community Partners</div>
-          <div style="font-size:1.5rem; font-weight:800">***</div>
+        <div class="card">
+          <h3>Dynamic, Responsive, Adaptive, and Multifaceted Knowledge Graph (DreamKG; NSF Proto-OKN)</h3>
+          <p>A dynamic knowledge graph to connect data, models, and community expertise for public health insights.</p>
+          <span class="tag">Knowledge Graph</span> <span class="tag">Data Integration</span>
+        </div>
+        <div class="card">
+          <h3>DETERMINE</h3>
+          <p>Multi-institutional collaboration to harness clinical and social data for decision support in diabetes prevention and care.</p>
+          <span class="tag">Machine Learning</span> <span class="tag">Diabetes prevention</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="card" style="padding:1rem">
-      <img src="assets/img/coord-placeholder.jpg" alt="Health informatics and AI illustration" />
-      <p class="small" style="margin:.5rem 0 0; color:#6b7280">From health data to equitable, real-world impact.</p>
+  <!-- JOIN US -->
+  <section id="join" class="section" style="background:linear-gradient(135deg,#ffffff 0%, #f6f7fb 100%); text-align:center;">
+    <div class="container">
+      <h2>Interested in joining the IHS Lab?</h2>
+      <div style="margin-top:1.25rem;">
+        <a class="btn" href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener">
+          Fill Out Our Interest Form!
+        </a>
+      </div>
     </div>
-  </div>
-</section>
-<main class="container">
-<section>
-  <h2>Featured Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>AI2Equity</h3>
-      <p>Explainable AI and stakeholder-engaged methods to improve cardiovascular risk assessment and equity-focused decision-making.</p>
-      <span class="tag">AI/ML</span> <span class="tag">XAI</span> <span class="tag">Equity</span>
-    </div>
-    <div class="card">
-      <h3> Dynamic, REsponsive, Adaptive, and Multifaceted Knowledge Graph (DreamKG; NSF Proto-OKN)</h3>
-      <p>A dynamic knowledge graph to connect data, models, and community expertise for public health insights.</p>
-      <span class="tag">Knowledge Graph</span> <span class="tag">Data Integration</span>
-    </div>
-    <div class="card">
-      <h3>Diabetes Prediction and Equity through Responsible Machine Learning (DETERMINE)</h3>
-      <p>Multi-institutional collaboration to harness clinical and social data for improved outcomes and decision support in diabetes prevention and care.</p>
-      <span class="tag">Machine Learning</span> <span class="tag">Diabetes prevention</span>
-    </div>
-  </div>
-</section>
-<section id="join" class="section"
-  style="background:linear-gradient(135deg,#ffffff 0%, #f6f7fb 100%);
-         text-align:center;">
-  <div class="container">
-    <h2> Interested in joining the IHS Lab? </h2>
-    <div style="margin-top:1.25rem;">
-      <a class="btn" href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener">
-        Fill Out Our Interest Form!
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
+
 <div id="footer"></div>
   <script>
     async function includeHTML(file, elementId) {
