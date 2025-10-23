@@ -416,4 +416,50 @@ footer a:hover{ border-bottom-color:#fff }
 
   /* paragraph / description */
   .project-card p,
+
+   /* =========================================
+   FEATURED PROJECT TAGS — Temple Red Outline Style
+   ========================================= */
+@media (min-width: 769px) {
+  /* tag container */
+  .project-card .tags,
+  .card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  /* outlined Temple Red tag style */
+  .project-card .tag,
+  .card .tag,
+  .project-card .chip,
+  .card .chip {
+    background: transparent;
+    color: var(--primary);
+    border: 1.8px solid var(--primary);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    display: inline-block;
+    width: auto;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+  }
+  /* hover fills Temple Red */
+  .project-card .tag:hover,
+  .card .tag:hover,
+  .project-card .chip:hover,
+  .card .chip:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(153, 0, 0, 0.15);
+  }
+}
 /* ===== End of stylesheet ===== */
