@@ -1,52 +1,53 @@
-/* =========================
-   Intelligent Health Solutions Lab Theme (Temple Red)
-   ========================= */
+/* =========================================================
+   Intelligent Health Solutions Lab — Theme (Temple Red)
+   ========================================================= */
+
+/* ============ THEME TOKENS (colors, radii, spacing) ============ */
 :root{
   /* Brand */
-  --primary:#990000; /* Temple red */
-  --accent:#333333;  /* charcoal / dark gray */
-  --text:#111827;    /* near-black */
-  --muted:#6b7280;   /* gray-500 */
+  --primary:#990000;   /* Temple red */
+  --accent:#333333;    /* charcoal */
+  --text:#111827;      /* near-black */
+  --muted:#6b7280;     /* gray-500 */
   --bg:#ffffff;
   --bg-alt:#f6f7fb;
 
   /* UI */
   --radius:14px;
   --shadow:0 8px 24px rgba(0,0,0,.08);
-  --ring: 0 0 0 3px rgba(153,0,0,.25);
+  --ring:0 0 0 3px rgba(153,0,0,.25);
 
   /* Layout */
   --maxw:1100px;
-  --space: clamp(14px, 1.6vw, 22px);
+  --space:clamp(14px,1.6vw,22px);
 }
 
+/* ============ BASE / RESET ============ */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  line-height:1.65;
-  font-size:16px;
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text); background:var(--bg);
+  line-height:1.65; font-size:16px;
 }
 img{max-width:100%; height:auto; border-radius:10px}
 a{color:var(--primary); text-decoration:none}
-a:hover{ text-decoration:underline }
+a:hover{text-decoration:underline}
 
-/* Containers */
+/* ============ LAYOUT HELPERS ============ */
 .container{max-width:var(--maxw); margin-inline:auto; padding:0 var(--space)}
-.section{padding: clamp(2.5rem, 5vw, 4rem) 0}
-.section h2{margin:0 0 .75rem; font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.1rem); color:var(--primary)}
+.section{padding:clamp(2.5rem,5vw,4rem) 0}
+.section h2{margin:0 0 .75rem; font-size:clamp(1.5rem,1.2rem + 1.6vw,2.1rem); color:var(--primary)}
 .lead{color:var(--muted); max-width:70ch}
 
-/* Header / Nav */
+/* ============ HEADER / NAV ============ */
 header{
   position:sticky; top:0; z-index:10;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(10px);
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid #eee;
-  box-shadow: var(--shadow);
+  box-shadow:var(--shadow);
 }
 nav{
   display:flex; align-items:center; justify-content:space-between;
@@ -57,78 +58,88 @@ nav{
 .navlinks{display:flex; gap:.5rem; flex-wrap:wrap}
 .navlinks a{
   padding:.45rem .7rem; border-radius:10px; color:#222;
-  transition: background .2s, color .2s, transform .2s;
+  transition:background .2s, color .2s, transform .2s;
 }
-.navlinks a:hover{ background:var(--primary); color:#fff; transform: translateY(-1px)}
-.navlinks a:focus-visible{ outline:none; box-shadow: var(--ring) }
+.navlinks a:hover{background:var(--primary); color:#fff; transform:translateY(-1px)}
+.navlinks a:focus-visible{outline:none; box-shadow:var(--ring)}
+/* Active underline (set via .active or aria-current="page") */
+.navlinks a.active,
+.navlinks a[aria-current="page"]{border-bottom:2px solid var(--primary); padding-bottom:.25rem}
 
-/* Buttons */
+/* Home-only navbar tweak (hide brand + center links on the homepage) */
+.home .brand{display:none;}
+.home nav{justify-content:center;}
+
+/* ============ BUTTONS ============ */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
   background:var(--primary); color:#fff; border:1px solid transparent;
   padding:.7rem 1rem; border-radius:999px; font-weight:600; box-shadow:var(--shadow);
-  transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+  transition:transform .2s, box-shadow .2s, background .2s, color .2s;
 }
-.btn:hover{ transform:translateY(-2px) }
-.btn.secondary{ background:#fff; color:var(--primary); border-color:var(--primary) }
+.btn:hover{transform:translateY(-2px)}
+.btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
 
-/* Hero */
+/* ============ HOMEPAGE HERO ============ */
 .hero{
-  background: linear-gradient(135deg, #fff 0%, #fff 55%, var(--bg-alt) 100%);
+  background:linear-gradient(135deg,#fff 0%,#fff 55%,var(--bg-alt) 100%);
   border-bottom:1px solid #eee;
 }
 .hero .wrap{
   display:grid; gap:2rem;
-  grid-template-columns: 1.2fr 1fr;
-  padding: clamp(2rem, 6vw, 4rem) 0;
+  grid-template-columns:1.2fr 1fr;
+  padding:clamp(2rem,6vw,4rem) 0;
 }
-.hero h1{ margin:.3rem 0; font-size: clamp(2rem, 1.2rem + 2.5vw, 3rem); color:#111 }
-.hero p{ color:var(--muted); font-size:1.05rem }
-.stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem }
+.hero h1{margin:.3rem 0; font-size:clamp(2rem,1.2rem + 2.5vw,3rem); color:#111}
+.hero p{color:var(--muted); font-size:1.05rem}
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem}
 
-/* Cards & Grid */
+/* ============ COMPONENTS ============ */
 .card{
   background:#fff; border:1px solid #eee; border-radius:var(--radius);
   box-shadow:var(--shadow); overflow:hidden;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-.card:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.12) }
+.card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.12)}
 
-.grid{ display:grid; gap:1rem; grid-template-columns:repeat(3,1fr) }
+.grid{display:grid; gap:1rem; grid-template-columns:repeat(3,1fr)}
 .tag{
   display:inline-block; padding:.25rem .55rem; font-size:.78rem; font-weight:700;
   border:1px solid #ddd; border-radius:999px; color:var(--accent); background:var(--bg-alt);
 }
 
-/* People */
-.people{ display:grid; gap:1rem; grid-template-columns:repeat(4,1fr) }
-.person{ text-align:center; padding:1rem }
-.person .role{ color:var(--muted); font-size:.92rem }
+/* People grid */
+.people{display:grid; gap:1rem; grid-template-columns:repeat(4,1fr)}
+.person{text-align:center; padding:1rem}
+.person .role{color:var(--muted); font-size:.92rem}
+/* Uniform headshots (optional) */
+/* .person img{width:120px; height:120px; border-radius:50%; object-fit:cover} */
 
-/* Publications */
-.publist{ display:grid; gap:.75rem; margin-top:.75rem }
-.pubitem{ background:#fff; border:1px solid #eee; border-radius:12px; padding:.85rem 1rem }
-.pubitem .meta{ color:var(--muted); font-size:.95rem }
+/* Publications list */
+.publist{display:grid; gap:.75rem; margin-top:.75rem}
+.pubitem{background:#fff; border:1px solid #eee; border-radius:12px; padding:.85rem 1rem}
+.pubitem .meta{color:var(--muted); font-size:.95rem}
 
-/* Footer */
+/* ============ FOOTER ============ */
 footer{
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  /* If the charcoal accent feels too dark, we can swap to: background: var(--primary); */
+  background:linear-gradient(135deg,var(--primary),var(--accent));
   color:#fff; padding:2rem 0; margin-top:2rem;
 }
-footer a{ color:#fff; text-decoration:underline }
+footer a{color:#fff; text-decoration:underline}
 
-/* Utilities */
-.small{ font-size:.9rem; color:#666 }
-.muted{ color:var(--muted) }
+/* ============ UTILITIES ============ */
+.small{font-size:.9rem; color:#666}
+.muted{color:var(--muted)}
 
-/* Responsive */
-@media (max-width: 1000px){
-  .hero .wrap{ grid-template-columns:1fr }
-  .grid{ grid-template-columns:1fr 1fr }
-  .people{ grid-template-columns:1fr 1fr 1fr }
+/* ============ RESPONSIVE ============ */
+@media (max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .people{grid-template-columns:1fr 1fr 1fr}
 }
-@media (max-width: 640px){
-  .navlinks{ display:none }
-  .grid, .people{ grid-template-columns:1fr }
-  .stats{ grid-template-columns:1fr 1fr; gap:.75rem }
+@media (max-width:640px){
+  .navlinks{display:none} /* simple mobile treatment; we can consider swapping to hamburger later */
+  .grid,.people{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr; gap:.75rem}
 }
