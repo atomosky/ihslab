@@ -65,11 +65,11 @@ nav{
 /* Active underline (set via .active or aria-current="page") */
 .navlinks a.active,
 .navlinks a[aria-current="page"] {
-  border-bottom: 3px solid var(--primary);
-  padding-bottom: .25rem;
-  font-weight: 600;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  padding: .45rem .9rem;
 }
-
 /* Home-only navbar tweak (hide lab title + center links on the homepage) */
 .home .brand{display:none;}
 .home nav{justify-content:center;}
