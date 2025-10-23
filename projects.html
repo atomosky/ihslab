@@ -51,11 +51,23 @@
 </div>
 
 </main>
-<footer>
-  <div class="container">
-    © <span id="year"></span> IHS Lab · Temple University
-  </div>
-</footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+<div id="footer"></div>
+  <script>
+    async function includeHTML(file, elementId) {
+      const response = await fetch(file);
+      const text = await response.text();
+      document.getElementById(elementId).innerHTML = text;
+
+      // Highlight the active nav link
+      const path = location.pathname.split('/').pop();
+      document.querySelectorAll('.navlinks a').forEach(a => {
+        if (a.getAttribute('href') === path) a.classList.add('active');
+      });
+    }
+
+    // Load header and footer
+    includeHTML('header.html', 'header');
+    includeHTML('footer.html', 'footer');
+  </script>
 </body>
 </html>
