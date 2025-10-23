@@ -1,5 +1,6 @@
 /* =========================================================
    Intelligent Health Solutions Lab — Theme (Temple Red)
+   Final consolidated stylesheet
    ========================================================= */
 
 /* ============ THEME TOKENS (colors, radii, spacing) ============ */
@@ -24,13 +25,22 @@
   /* Global rhythm */
   --page-top: clamp(2rem, 5vw, 3rem);   /* space from navbar to first content */
   --section-y: clamp(2rem, 5vw, 3rem);  /* section vertical padding */
+
+  /* Motion */
+  --menu-speed: 220ms;
+  --menu-ease: cubic-bezier(.2,.8,.2,1);
 }
 
 /* ============ BASE / RESET ============ */
 *{ box-sizing:border-box }
 html{ scroll-behavior:smooth }
 @media (prefers-reduced-motion: reduce){
-  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition:none !important; scroll-behavior:auto !important; }
+  *, *::before, *::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
 }
 body{
   margin:0;
@@ -71,25 +81,93 @@ header{
 }
 nav{
   display:flex; align-items:center; justify-content:center; /* centered on all pages */
-  flex-wrap:nowrap; /* keep on one line */
   gap:1rem; padding:.7rem 0;
-  overflow:hidden;
+  position:relative;
 }
-/* brand exists in markup but stays hidden site-wide by choice */
-.brand{ display:none }
+.brand{ display:none } /* brand hidden site-wide by choice */
 
-.navlinks{ display:flex; gap:.75rem; flex-wrap:nowrap; align-items:center }
+.navlinks{
+  display:flex; gap:.75rem; align-items:center;
+  flex-wrap:nowrap;
+}
 .navlinks a{
   padding:.45rem .7rem; border-radius:10px; color:#222;
   transition: background .2s, color .2s, transform .2s;
 }
-.navlinks a:hover{ background:var(--primary); color:#fff; transform: translateY(-1px); text-decoration:none }
+.navlinks a:hover{
+  background:var(--primary); color:#fff; transform: translateY(-1px);
+  text-decoration:none;
+}
 .navlinks a.active,
 .navlinks a[aria-current="page"]{
   background:var(--primary);
   color:#fff;
   border-radius:8px;
   padding:.45rem .9rem;
+}
+
+/* ============ MOBILE NAV TOGGLE ============ */
+.nav-toggle{
+  display:none;
+  position:absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  border:0;
+  background:transparent;
+  padding:.4rem;
+  cursor:pointer;
+  border-radius:10px;
+}
+.nav-toggle:focus-visible{ box-shadow: var(--ring); }
+
+/* icon swap */
+.nav-toggle svg.close-icon { display:none; }
+.nav-toggle.open svg.hamburger-icon { display:none; }
+.nav-toggle.open svg.close-icon { display:inline; }
+
+/* Mobile behavior (≤640px) */
+@media (max-width:640px){
+  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+
+  /* Base: hidden */
+  .navlinks{
+    display:flex;
+    position:absolute;
+    left:0; right:0;
+    top:100%;
+    margin-top:.35rem;
+    flex-direction:column;
+    align-items:center;
+    gap:.25rem;
+
+    /* animated dropdown */
+    background:#fff;
+    border-top:1px solid #eee;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+
+    /* start closed */
+    opacity:0;
+    transform: translateY(-6px);
+    pointer-events:none;
+    max-height:0;
+    overflow:hidden;
+    transition:
+      opacity var(--menu-speed) var(--menu-ease),
+      transform var(--menu-speed) var(--menu-ease),
+      max-height var(--menu-speed) var(--menu-ease);
+  }
+
+  /* Open state */
+  .navlinks.open{
+    opacity:1;
+    transform: translateY(0);
+    pointer-events:auto;
+    max-height:320px; /* enough for all links */
+    padding:.5rem 0 .75rem;
+  }
+
+  .navlinks a{ padding:.55rem .9rem; width:max-content }
 }
 
 /* ============ BUTTONS ============ */
@@ -183,42 +261,8 @@ footer a:hover{ border-bottom-color:#fff }
   .people{ grid-template-columns:1fr 1fr }
 }
 @media (max-width:640px){
-  .navlinks{ display:none } /* simple mobile treatment for now */
   .grid, .people{ grid-template-columns:1fr }
   .stats{ grid-template-columns:1fr 1fr; gap:.75rem }
-}
-/* Mobile nav toggle */
-.nav-toggle{
-  display:none;
-  position:absolute;
-  right: clamp(1rem, 3vw, 2rem);
-  top: 50%;
-  transform: translateY(-50%);
-  border:0;
-  background:transparent;
-  padding:.4rem;
-  cursor:pointer;
-  border-radius:10px;
-}
-.nav-toggle:focus-visible{ box-shadow: var(--ring); }
-header .container{ position:relative; }
-
-/* Mobile behavior (≤640px) */
-@media (max-width:640px){
-  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
-  /* base rule already hides navlinks at this width */
-  .navlinks{ display:none; }
-  .navlinks.open{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:.5rem;
-    background:#fff;
-    padding:.5rem 0 1rem;
-    margin-top:.5rem;
-    border-top:1px solid #eee;
-  }
-  .navlinks.open a{ padding:.5rem .9rem; }
 }
 
 /* ===== End of stylesheet ===== */
