@@ -263,105 +263,115 @@ footer a:hover{ border-bottom-color:#fff }
   .grid, .people{ grid-template-columns:1fr }
   .stats{ grid-template-columns:1fr 1fr; gap:.75rem }
 }
-/* =========================================
-   MOBILE POLISH (≤768px only)
-   Forces left-aligned menu, tidy cards,
-   better tap targets, and no side-scroll.
-   ========================================= */
+/* =========================================================
+   MOBILE-ONLY POLISH (≤768px) — desktop remains unchanged
+   ========================================================= */
 @media (max-width: 768px) {
-  /* 1) Kill horizontal scroll + consistent box sizing */
-  html, body { overflow-x: hidden !important; }
-  *, *::before, *::after { box-sizing: border-box !important; }
 
-  /* 2) Hero/title sizing that won’t look giant on phones */
-  h1 { font-size: clamp(1.7rem, 6.4vw, 2.2rem) !important; line-height: 1.15 !important; }
-  h2 { font-size: clamp(1.25rem, 5.2vw, 1.6rem) !important; line-height: 1.2 !important; }
+  /* 1) Global rhythm + no side-scroll */
+  html, body { overflow-x: hidden; }
+  *, *::before, *::after { box-sizing: border-box; }
+  section, header, footer { padding: 1.25rem clamp(1rem, 5vw, 1.5rem); }
+  h1 { font-size: clamp(1.7rem, 6.2vw, 2.2rem); line-height: 1.15; }
+  h2 { font-size: clamp(1.25rem, 5.2vw, 1.6rem); line-height: 1.2; }
+  p   { line-height: 1.55; }
 
-  /* 3) Section padding: reduce big desktop spacing on mobile */
-  header, section, footer { padding: 1.25rem clamp(1rem, 5vw, 1.5rem) !important; }
-
-  /* 4) MOBILE MENU: force left alignment, sensible width, clean spacing */
-  /* Catch common patterns: if your menu uses any of these containers, we win */
-  nav .menu, nav .menu-panel, nav .drawer, nav .offcanvas,
-  .mobile-menu, .menu-panel, .drawer, .offcanvas, .nav-menu, .site-menu {
-    text-align: left !important;
-    padding: 0.75rem 1rem !important;
-    border-radius: 12px !important;
-    background: var(--bg-alt, #f6f7fb) !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,.08) !important;
-    width: min(92vw, 420px) !important;
-    max-height: calc(100dvh - 1rem) !important;
-    overflow-y: auto !important;
-    left: 0 !important; right: auto !important;  /* if it was centered */
-    transform: none !important;                  /* kill translate centering */
+  /* 2) Hero spacing (reduces big desktop paddings on phones) */
+  .hero, .page-hero, .masthead {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
   }
 
-  /* Links inside the menu */
-  nav a, .mobile-menu a, .menu-panel a, .drawer a, .offcanvas a, .nav-menu a, .site-menu a {
-    display: block !important;
-    padding: .75rem .25rem !important;
-    font-size: 1.05rem !important;
-    font-weight: 500 !important;
-    color: var(--text, #111827) !important;
-    text-decoration: none !important;
-    border-radius: 8px !important;
+  /* 3) MOBILE MENU — left-align, comfy spacing, safe-area padding */
+  /* These selectors intentionally broad to match common patterns */
+  .mobile-menu, .menu-panel, .drawer, .offcanvas, nav .menu {
+    text-align: left;
+    padding: 12px 16px;
+    padding-bottom: max(28px, env(safe-area-inset-bottom)); /* keeps “Connect” off iOS bar */
+    border-radius: 12px;
+    background: var(--bg-alt);
+    box-shadow: var(--shadow);
+    width: min(92vw, 420px);
+    max-height: calc(100dvh - 1rem);
+    overflow-y: auto;
+    left: 0; right: auto;
   }
-  /* Active/hover state */
-  .mobile-menu a:hover, .menu-panel a:hover, .drawer a:hover, .offcanvas a:hover, .nav-menu a:hover,
-  .mobile-menu .active, .menu-panel .active, .drawer .active, .offcanvas .active, .nav-menu .active {
-    background: rgba(153,0,0,.08) !important;
-    color: var(--primary, #990000) !important;
-    padding-left: .5rem !important;
+  .mobile-menu a, .menu-panel a, .drawer a, .offcanvas a, nav .menu a {
+    display: block;
+    padding: 12px 4px;
+    margin: 2px 0;
+    line-height: 1.25;
+    font-size: 1.05rem;
+    color: var(--text);
+    border-radius: 8px;
+    text-decoration: none;
   }
-
-  /* Bigger tap target for hamburger */
+  .mobile-menu a:last-child,
+  .menu-panel a:last-child,
+  .drawer a:last-child,
+  .offcanvas a:last-child,
+  nav .menu a:last-child { margin-bottom: 10px; }
+  .mobile-menu a:hover, .menu-panel a:hover, .drawer a:hover, .offcanvas a:hover, nav .menu a:hover,
+  .mobile-menu .active, .menu-panel .active, .drawer .active, .offcanvas .active, nav .menu .active {
+    background: rgba(153,0,0,.08);
+    color: var(--primary);
+    padding-left: .5rem;
+  }
   .hamburger, .menu-toggle, .nav-toggle, button[aria-label*="menu"] {
-    width: 44px !important; height: 44px !important;
+    width: 44px; height: 44px;  /* easier tap target */
   }
 
-  /* 5) Cards/tiles: one per row with consistent gaps */
+  /* 4) Cards/tiles: stack nicely with breathing room */
   .cards, .card-grid, .grid, .tiles {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
   .card, .tile, .panel, .feature, .box {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 1rem !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,.06) !important;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
   }
 
-  /* 6) Chips/tags wrap nicely instead of cramming */
+  /* 5) Chips/tags wrap cleanly */
   .chip, .tag, .badge {
-    display: inline-flex !important;
-    align-items: center !important;
-    padding: .35rem .6rem !important;
-    margin: .25rem .35rem .25rem 0 !important;
-    border-radius: 999px !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    padding: .35rem .6rem;
+    margin: .25rem .35rem .25rem 0;
+    border-radius: 999px;
+    line-height: 1;
+    white-space: nowrap;
   }
 
-  /* 7) CTA buttons: full-width + comfy */
-  .btn, .button, .cta-button, a.button-primary, a[href*="interest"] {
-    display: inline-block !important;
-    width: 100% !important;
-    text-align: center !important;
-    padding: 1rem !important;
-    font-size: 1.1rem !important;
-    border-radius: 12px !important;
+  /* 6) CTA button: full width on mobile, consistent color */
+  .cta-button, a.button-primary {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
   }
 
-  /* 8) Footer tidy */
-  footer { text-align: center !important; font-size: .95rem !important; }
-  footer p { margin: .4rem 0 !important; }
+  /* 7) Footer: center + keep long lines tidy */
+  footer { text-align: center; font-size: .95rem; letter-spacing: .1px; }
+  footer p { margin: .4rem 0; }
+  footer .nowrap { white-space: nowrap; }
 
-  /* 9) No media overflow */
-  img, svg, video, iframe { max-width: 100% !important; height: auto !important; display: block !important; }
+  /* 8) Anchors don’t hide under fixed header */
+  html { scroll-padding-top: 72px; }
 
-  /* 10) Anchors don’t hide under fixed header */
-  html { scroll-padding-top: 72px !important; }
+  /* 9) Prevent media overflow */
+  img, svg, video, iframe { max-width: 100%; height: auto; display: block; }
 }
+
+/* =========================================================
+   OPTIONAL UTILITIES
+   ========================================================= */
+.nowrap { white-space: nowrap; } /* use on the footer department line */
+
 /* ===== End of stylesheet ===== */
