@@ -1,49 +1,62 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>People · Intelligent Health Solutions Lab</title>
-  <meta name="description" content="Intelligent Health Solutions Lab at Temple University – AI, data science, and health equity.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About • Intelligent Health Solutions Lab</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- fonts (same as index) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>h1,h2,h3{font-family:"Poppins","Inter",sans-serif}</style>
 </head>
 <body>
-<header>
-  <div class="container">
-    <nav>
-      <strong>Intelligent Health Solutions Lab · Temple University</strong>
-      <span style="margin:0 .5rem;">|</span>
-      <a href="index.html" class="">Home</a><a href="projects.html" class="">Projects</a><a href="publications.html" class="">Publications</a><a href="about.html" class="active">People</a>
-    </nav>
-  </div>
-</header>
-<main class="container">
+  <!-- header (same on all pages) -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">Intelligent Health Solutions Lab · Temple University</div>
+        <div class="navlinks">
+          <a href="index.html">Home</a>
+          <a href="about.html" class="active">About</a>
+          <a href="people.html">Meet Us</a>
+          <a href="projects.html">Projects</a>
+          <a href="publications.html">Publications</a>
+          <a href="resources.html">Resources</a>
+          <a href="connect.html">Connect</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-<h1>People</h1>
-<div class="grid">
-  <div class="card">
-    <img src="assets/img/pi-placeholder.jpg" alt="PI headshot" class="responsive">
-    <h3>Huanmei Wu, PhD</h3>
-    <p>Director, IHS Lab · Professor and Chair, Health Services Administration & Policy, Barnett College of Public Health, Temple University</p>
-    <p class="small">Bio:***</p>
-    <p class="small">Interests: AI/ML, health informatics, equity, knowledge graphs.</p>
-  </div>
-  <div class="card">
-    <img src="assets/img/coord-placeholder.jpg" alt="Coordinator headshot" class="responsive">
-    <h3>AnneMarie Tomosky, MPH</h3>
-    <p>Senior Program Coordinator, IHS Lab</p>
-    <p class="small">Bio: ***.</p>
-     <p class="small">Interests:***</p>
-  </div>
-</div>
-<p class="small">Add students, research staff, and collaborators here.</p>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>About the Lab</h1>
+        <p class="lead">
+          We advance data-driven public health and equitable clinical solutions through
+          health informatics, AI/ML, and implementation science.
+        </p>
 
-</main>
-<footer>
-  <div class="container">
-    © <span id="year"></span> IHS Lab · Temple University
-  </div>
-</footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+        <h2>Mission</h2>
+        <p>
+          ***
+        </p>
+
+        <h2>Research Areas</h2>
+        <ul>
+          <li>***</li>
+          <li>***</li>
+          <li>***</li>
+        </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap">
+      <div><strong>Intelligent Health Solutions Lab</strong><br><span class="small">© <span id="year"></span></span></div>
+      <div class="small">Philadelphia, PA</div>
+    </div>
+    <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  </footer>
 </body>
 </html>
