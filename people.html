@@ -1,52 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>People • Intelligent Health Solutions Lab</title>
-  <meta name="description" content="Intelligent Health Solutions Lab at Temple University – AI, data science, and health equity.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="description" content="Intelligent Health Solutions Lab at Temple University – AI, data science, and health equity." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Optional: match headings font to other pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>h1,h2,h3{font-family:"Poppins","Inter",sans-serif}</style>
 </head>
 <body>
-<header>
-<div id="header"></div>
-</header>
-<main class="container">
-<h1>Meet the Team • Intelligent Health Solutions Lab</h1>
-<div class="grid">
-  <div class="card">
-    <img src="assets/img/pi-placeholder.jpg" alt="PI headshot" class="responsive">
-    <h3>Huanmei Wu, PhD</h3>
-    <p>Director, IHS Lab · Professor and Chair, Health Services Administration & Policy, Barnett College of Public Health, Temple University</p>
-    <p class="small">Bio:***</p>
-    <p class="small">Interests: AI/ML, health informatics, equity, knowledge graphs.</p>
-  </div>
-  <div class="card">
-    <img src="assets/img/coord-placeholder.jpg" alt="Coordinator headshot" class="responsive">
-    <h3>AnneMarie Tomosky, MPH</h3>
-    <p>Senior Program Coordinator, IHS Lab</p>
-    <p class="small">Bio: ***.</p>
-     <p class="small">Interests:***</p>
-  </div>
-</div>
-<p class="small">Add students, research staff, and collaborators here.</p>
+  <!-- shared header (do NOT wrap in <header>) -->
+  <div id="header"></div>
 
-</main>
-<div id="footer"></div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>Meet the Team • Intelligent Health Solutions Lab</h1>
+
+        <div class="people">
+          <!-- PI -->
+          <article class="card person">
+            <img src="assets/img/pi-placeholder.jpg" alt="Headshot of Huanmei Wu" />
+            <h3>Huanmei Wu, PhD</h3>
+            <p class="small muted">Director, IHS Lab · Professor & Chair, HSAP, Barnett College of Public Health, Temple University</p>
+            <p class="small">Bio: ***</p>
+            <p class="small">Interests: AI/ML, health informatics, equity, knowledge graphs</p>
+          </article>
+
+          <!-- Coordinator -->
+          <article class="card person">
+            <img src="assets/img/coord-placeholder.jpg" alt="Headshot of AnneMarie Tomosky" />
+            <h3>AnneMarie Tomosky, MPH</h3>
+            <p class="small muted">Senior Program Coordinator, IHS Lab</p>
+            <p class="small">Bio: ***</p>
+            <p class="small">Interests: ***</p>
+          </article>
+
+          <!-- Add more people cards here -->
+        </div>
+
+        <p class="small" style="margin-top:1rem">Add students, research staff, and collaborators here.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
   <script>
     async function includeHTML(file, elementId) {
       const response = await fetch(file);
       const text = await response.text();
       document.getElementById(elementId).innerHTML = text;
 
-      // Highlight the active nav link
-      const path = location.pathname.split('/').pop();
-      document.querySelectorAll('.navlinks a').forEach(a => {
+      // highlight current page
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.navlinks a').forEach(a=>{
         if (a.getAttribute('href') === path) a.classList.add('active');
       });
     }
-
-    // Load header and footer
     includeHTML('header.html', 'header');
     includeHTML('footer.html', 'footer');
   </script>
