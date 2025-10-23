@@ -1,65 +1,73 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects • Intelligent Health Solutions Lab</title>
-  <meta name="description" content="Intelligent Health Solutions Lab at Temple University – AI, data science, and health equity.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="description" content="Intelligent Health Solutions Lab at Temple University – AI, data science, and health equity." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Optional: match headings font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>h1,h2,h3{font-family:"Poppins","Inter",sans-serif}</style>
 </head>
 <body>
-<header>
-<div id="header"></div>
-</header>
-<main class="container">
+  <!-- shared header (do NOT wrap in <header>) -->
+  <div id="header"></div>
 
-<h1>Projects • Intelligent Health Solutions Lab</h1>
-<div class="grid">
-  <div class="card">
-    <h3>AI2Equity (NIH)</h3>
-    <p>Explainable AI for cardiovascular risk with patient/provider co-design.</p>
-    <ul>
-      <li>Leads: ***</li>
-      <li>Methods: ***</li>
-      <li>Outputs: ***</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>DreamKG (NSF Proto-OKN)</h3>
-    <p>Knowledge graph linking datasets, models, and community knowledge.</p>
-    <ul>
-      <li>Leads: Dr. Wu (Temple site), multi-team collaboration</li>
-      <li>Methods: ***</li>
-      <li>Outputs:***</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>DETERMINE</h3>
-    <p>Data integration for population health and decision support.</p>
-    <ul>
-      <li>Leads: Multi-institutional consortium</li>
-      <li>Methods: ***</li>
-      <li>Outputs: ***</li>
-    </ul>
-  </div>
-</div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>Projects • Intelligent Health Solutions Lab</h1>
 
-</main>
-<div id="footer"></div>
+        <div class="grid">
+          <article class="card" style="padding:1rem">
+            <h3>AI2Equity (NIH)</h3>
+            <p>Explainable AI for cardiovascular risk with patient/provider co-design.</p>
+            <ul>
+              <li>Leads: ***</li>
+              <li>Methods: ***</li>
+              <li>Outputs: ***</li>
+            </ul>
+          </article>
+
+          <article class="card" style="padding:1rem">
+            <h3>DreamKG (NSF Proto-OKN)</h3>
+            <p>Knowledge graph linking datasets, models, and community knowledge.</p>
+            <ul>
+              <li>Leads: Dr. Wu (Temple site), multi-team collaboration</li>
+              <li>Methods: ***</li>
+              <li>Outputs: ***</li>
+            </ul>
+          </article>
+
+          <article class="card" style="padding:1rem">
+            <h3>DETERMINE</h3>
+            <p>Data integration for population health and decision support.</p>
+            <ul>
+              <li>Leads: Multi-institutional consortium</li>
+              <li>Methods: ***</li>
+              <li>Outputs: ***</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
   <script>
     async function includeHTML(file, elementId) {
       const response = await fetch(file);
       const text = await response.text();
       document.getElementById(elementId).innerHTML = text;
 
-      // Highlight the active nav link
-      const path = location.pathname.split('/').pop();
-      document.querySelectorAll('.navlinks a').forEach(a => {
+      // highlight current page
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.navlinks a').forEach(a=>{
         if (a.getAttribute('href') === path) a.classList.add('active');
       });
     }
-
-    // Load header and footer
     includeHTML('header.html', 'header');
     includeHTML('footer.html', 'footer');
   </script>
