@@ -187,5 +187,38 @@ footer a:hover{ border-bottom-color:#fff }
   .grid, .people{ grid-template-columns:1fr }
   .stats{ grid-template-columns:1fr 1fr; gap:.75rem }
 }
+/* Mobile nav toggle */
+.nav-toggle{
+  display:none;
+  position:absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  border:0;
+  background:transparent;
+  padding:.4rem;
+  cursor:pointer;
+  border-radius:10px;
+}
+.nav-toggle:focus-visible{ box-shadow: var(--ring); }
+header .container{ position:relative; }
+
+/* Mobile behavior (≤640px) */
+@media (max-width:640px){
+  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+  /* base rule already hides navlinks at this width */
+  .navlinks{ display:none; }
+  .navlinks.open{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.5rem;
+    background:#fff;
+    padding:.5rem 0 1rem;
+    margin-top:.5rem;
+    border-top:1px solid #eee;
+  }
+  .navlinks.open a{ padding:.5rem .9rem; }
+}
 
 /* ===== End of stylesheet ===== */
