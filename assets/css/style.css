@@ -64,7 +64,11 @@ nav{
 .navlinks a:focus-visible{outline:none; box-shadow:var(--ring)}
 /* Active underline (set via .active or aria-current="page") */
 .navlinks a.active,
-.navlinks a[aria-current="page"]{border-bottom:2px solid var(--primary); padding-bottom:.25rem}
+.navlinks a[aria-current="page"] {
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: .25rem;
+  font-weight: 600;
+}
 
 /* Home-only navbar tweak (hide brand + center links on the homepage) */
 .home .brand{display:none;}
