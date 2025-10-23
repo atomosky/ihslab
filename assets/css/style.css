@@ -70,7 +70,7 @@ nav{
   font-weight: 600;
 }
 
-/* Home-only navbar tweak (hide brand + center links on the homepage) */
+/* Home-only navbar tweak (hide lab title + center links on the homepage) */
 .home .brand{display:none;}
 .home nav{justify-content:center;}
 
