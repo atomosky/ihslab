@@ -374,4 +374,46 @@ footer a:hover{ border-bottom-color:#fff }
    ========================================================= */
 .nowrap { white-space: nowrap; } /* use on the footer department line */
 
+/* =========================================
+   FEATURED PROJECTS — Fixing spacing on desktop 
+   ========================================= */
+@media (min-width: 769px) {
+  /* grid container: even gaps + responsive layout */
+  .projects, .featured-projects, .cards, .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem; /* even space between cards */
+    align-items: start;
+    margin-top: 1.5rem;
+  }
+
+  /* each card */
+  .project-card, .card, .tile {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  /* subtle hover lift */
+  .project-card:hover, .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+  }
+
+  /* headings inside cards */
+  .project-card h3, .card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+
+  /* paragraph / description */
+  .project-card p,
 /* ===== End of stylesheet ===== */
