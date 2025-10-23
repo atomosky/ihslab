@@ -183,3 +183,42 @@ footer a:hover {
   .grid,.people{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr; gap:.75rem}
 }
+/* =========================
+   CONSISTENT LAYOUT OVERRIDES
+   ========================= */
+
+/* 1) Unified container padding (same side gutters everywhere) */
+.container{
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+/* 2) Global vertical rhythm */
+:root{
+  --page-top: clamp(2rem, 5vw, 3rem);   /* space from navbar to first content */
+  --section-y: clamp(2rem, 5vw, 3rem);  /* section vertical padding */
+}
+
+/* Space under the sticky header for ALL pages */
+main{ padding-top: var(--page-top); }
+
+/* Standardize all sections */
+.section{ padding: var(--section-y) 0; }
+
+/* Make the hero behave like a normal section */
+.hero{ border-bottom: 1px solid #eee; }
+.hero .wrap{ padding: var(--section-y) 0; }
+
+/* 3) Remove random extra gaps caused by margin-collapsing */
+main > .section:first-child{ margin-top: 0; }
+.section .container > :first-child{ margin-top: 0; }
+.section .container > :last-child{  margin-bottom: 0; }
+
+/* 4) Headings: consistent margins across pages */
+h1{ margin: 0 0 .75rem; }
+h2{ margin: 0 0 .75rem; }
+
+/* 5) Navbar: center links on all pages (you already chose this style) */
+nav{ justify-content: center; }
+.brand{ display: none; }  /* keep the brand hidden on every page */
