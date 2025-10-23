@@ -264,5 +264,101 @@ footer a:hover{ border-bottom-color:#fff }
   .grid, .people{ grid-template-columns:1fr }
   .stats{ grid-template-columns:1fr 1fr; gap:.75rem }
 }
+/* ============================
+   MOBILE-ONLY POLISH (≤768px)
+   ============================ */
+@media (max-width: 768px) {
+
+  /* 1) Global rhythm + no side-scroll */
+  html, body { overflow-x: hidden; }
+  section, header, footer { padding: 1.25rem clamp(1rem, 5vw, 1.5rem); }
+  h1 { font-size: clamp(1.7rem, 6.2vw, 2.2rem); line-height: 1.15; }
+  h2 { font-size: clamp(1.25rem, 5.2vw, 1.6rem); line-height: 1.2; }
+  p   { line-height: 1.55; }
+
+  /* 2) Hero spacing (reduces big desktop paddings on phones) */
+  .hero, .page-hero, .masthead {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+
+  /* 3) Mobile nav / drawer: left-align items, tidy spacing */
+  /* Works with many common menu patterns; only affects mobile */
+  .mobile-menu, .menu-panel, .drawer, nav .menu, .offcanvas {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: var(--bg-alt, #f6f7fb);
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    max-height: calc(100dvh - 1rem);
+    overflow-y: auto;
+  }
+  .mobile-menu a, .menu-panel a, .drawer a, nav .menu a, .offcanvas a {
+    display: block;
+    padding: .75rem .25rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text, #111827);
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  .mobile-menu a:hover, .menu-panel a:hover,
+  .drawer a:hover, nav .menu a:hover, .offcanvas a:hover,
+  .mobile-menu .active, .menu-panel .active,
+  .drawer .active, nav .menu .active, .offcanvas .active {
+    background: rgba(153,0,0,.08);       /* Temple red tint */
+    color: var(--primary, #990000);
+    padding-left: .5rem;
+  }
+  /* Make hamburger easier to tap */
+  .hamburger, .menu-toggle, .nav-toggle { width: 44px; height: 44px; }
+
+  /* 4) Cards/tiles: stack nicely with breathing room */
+  .cards, .grid, .tiles {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .card, .tile, .panel, .feature {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  }
+
+  /* 5) Tag “chips” keep to one line + wrap cleanly */
+  .chip, .tag, .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: .35rem .6rem;
+    margin: .25rem .35rem .25rem 0;
+    border-radius: 999px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* 6) CTA buttons: full-width + comfortable tap size */
+  .btn, .button, .cta-button, a.button-primary {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+  }
+
+  /* 7) Footer: center + tighten lines */
+  footer { text-align: center; font-size: .95rem; }
+  footer p { margin: .4rem 0; }
+
+  /* 8) Anchor scroll offset for fixed headers */
+  html { scroll-padding-top: 72px; }
+
+  /* 9) Kill odd horizontal jiggle from images/iframes */
+  img, svg, video, iframe { max-width: 100%; height: auto; }
+
+  /* 10) Utility: reduce huge gaps that come from desktop spacers */
+  .spacer-xl, .gap-xl, .pad-xl { margin: 1rem 0 !important; padding: 1rem 0 !important; }
+}
 
 /* ===== End of stylesheet ===== */
