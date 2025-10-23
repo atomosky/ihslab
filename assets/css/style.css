@@ -375,7 +375,7 @@ footer a:hover{ border-bottom-color:#fff }
 .nowrap { white-space: nowrap; } /* use on the footer department line */
 
 /* =========================================
-   FEATURED PROJECTS — Fixing spacing on desktop 
+   FEATURED PROJECTS — Desktop spacing + tags
    ========================================= */
 @media (min-width: 769px) {
   /* grid container: even gaps + responsive layout */
@@ -414,23 +414,24 @@ footer a:hover{ border-bottom-color:#fff }
     color: var(--text);
   }
 
-  /* paragraph / description */
-  .project-card p,
+  /* description text */
+  .project-card p, .card p {
+    font-size: 0.97rem;
+    line-height: 1.5;
+    color: var(--muted);
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
 
-   /* =========================================
-   FEATURED PROJECT TAGS — Temple Red Outline Style
-   ========================================= */
-@media (min-width: 769px) {
   /* tag container */
-  .project-card .tags,
-  .card .tags {
+  .project-card .tags, .card .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: auto;
   }
 
-  /* outlined Temple Red tag style */
+  /* TAGS — Temple Red outline style */
   .project-card .tag,
   .card .tag,
   .project-card .chip,
@@ -445,11 +446,12 @@ footer a:hover{ border-bottom-color:#fff }
     letter-spacing: 0.01em;
     line-height: 1;
     display: inline-block;
-    width: auto;
+    width: auto;           /* no full-width pills */
     flex: 0 0 auto;
     white-space: nowrap;
     transition: all 0.2s ease-in-out;
   }
+
   /* hover fills Temple Red */
   .project-card .tag:hover,
   .card .tag:hover,
