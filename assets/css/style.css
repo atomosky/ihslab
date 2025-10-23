@@ -60,9 +60,9 @@ nav{
   padding:.45rem .7rem; border-radius:10px; color:#222;
   transition:background .2s, color .2s, transform .2s;
 }
-.navlinks a:hover{background:var(--primary); color:#fff; transform:translateY(-1px)}
+.navlinks a:hover{text-decoration: none; background:var(--primary); color:#fff; transform:translateY(-1px)}
 .navlinks a:focus-visible{outline:none; box-shadow:var(--ring)}
-/* Active underline (set via .active or aria-current="page") */
+/* Active display */
 .navlinks a.active,
 .navlinks a[aria-current="page"] {
   background: var(--primary);
